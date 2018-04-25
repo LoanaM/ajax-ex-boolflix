@@ -22,6 +22,8 @@ function filmresearch(){
                   language: 'it-IT',
                 },
               success: function(data) {
+                //svuoto la ricerca precedente
+                $('.risultati').html('')
                 for (var i = 0; i < data.results.length; i++) {
                   title = data.results[i].title
                   originaltitle = data.results[i].original_title
