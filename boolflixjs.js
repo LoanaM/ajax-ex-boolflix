@@ -1,7 +1,6 @@
 //attivo la ricerca al click
 $('#button').click(function(){
   filmresearch()
-  colorstar(1.5)
 });
 //attivo la ricerca premendo invio
 $('#search').keypress(function(e){
@@ -29,10 +28,17 @@ function filmresearch(){
                   originaltitle = data.results[i].original_title
                   language = data.results[i].original_language
                   vote = data.results[i].vote_average
+
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
                   '<p><b>LINGUA: </b><span id="lingua">'+language+'</span></p>'+
-                  '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>')
+                  '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
+                  '<i class="fas fa-star whitecolor" id="star1"></i>'+
+                  '<i class="fas fa-star whitecolor" id="star2"></i>'+
+                  '<i class="fas fa-star whitecolor" id="star3"></i>'+
+                  '<i class="fas fa-star whitecolor" id="star4"></i>'+
+                  '<i class="fas fa-star whitecolor" id="star5"></i>')
+                  colorstar(vote)
                 }
                 console.log(data);
               },
@@ -48,13 +54,11 @@ function filmresearch(){
 
 //trasformo in numeri decimali in 5stelle
 function colorstar(num){
-  // var star = 0
 
-  if(1<=num<2.5) {$('#star1').removeClass('whitecolor').addClass('goldcolor')};
-  // if(2.5<=num<4.5) {star=2};
-  // if(4.5<=num<6.5) {star=3};
-  // if(6.5<=num<8.5) {star=4};
-  // if(8.5<=num<=10) {star=5};
+  if(1<=num) {$('#star1').removeClass('whitecolor').addClass('goldcolor')};
+  if(2.5<=num) {$('#star2').removeClass('whitecolor').addClass('goldcolor')};
+  if(4.5<=num) {$('#star3').removeClass('whitecolor').addClass('goldcolor')};
+  if(6.5<=num) {$('#star4').removeClass('whitecolor').addClass('goldcolor')};
+  if(8.5<=num) {$('#star5').removeClass('whitecolor').addClass('goldcolor')};
 
-  // return star
 }
