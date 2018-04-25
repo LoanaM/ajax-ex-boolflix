@@ -1,4 +1,16 @@
+//attivo la ricerca al click
 $('#button').click(function(){
+  filmresearch()
+});
+//attivo la ricerca premendo invio
+$('#search').keypress(function(e){
+  if (e.which==13) {
+    filmresearch()
+  }
+})
+
+//funzione che ricerca il film
+function filmresearch(){
   var ricerca = $('#search').val()
 
     $.ajax ({
@@ -20,16 +32,10 @@ $('#button').click(function(){
                   '<p><b>LINGUA: </b><span id="lingua">'+language+'</span></p>'+
                   '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>')
                 }
-
-                $('#titolo').text(title)
-                $('#titoloriginale').text(originaltitle)
-                $('#lingua').text(language)
-                $('#voto').text(vote)
                 console.log(data);
               },
               error: function(){
                 alert('error');
               }
    });
-
-});
+};
