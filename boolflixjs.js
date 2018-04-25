@@ -33,12 +33,12 @@ function filmresearch(){
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
                   '<p><b>LINGUA: </b><span id="lingua">'+language+'</span></p>'+
                   '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
-                  '<i class="fas fa-star whitecolor" id="star1"></i>'+
-                  '<i class="fas fa-star whitecolor" id="star2"></i>'+
-                  '<i class="fas fa-star whitecolor" id="star3"></i>'+
-                  '<i class="fas fa-star whitecolor" id="star4"></i>'+
-                  '<i class="fas fa-star whitecolor" id="star5"></i>')
-                  colorstar(vote)
+                  '<i class="fas fa-star whitecolor star1 '+i+'"></i>'+
+                  '<i class="fas fa-star whitecolor star2 '+i+'"></i>'+
+                  '<i class="fas fa-star whitecolor star3 '+i+'"></i>'+
+                  '<i class="fas fa-star whitecolor star4 '+i+'"></i>'+
+                  '<i class="fas fa-star whitecolor star5 '+i+'"></i>')
+                  colorstar(vote,i)
                 }
                 console.log(data);
               },
@@ -53,12 +53,12 @@ function filmresearch(){
 
 
 //trasformo in numeri decimali in 5stelle
-function colorstar(num){
+function colorstar(num,classe){
 
-  if(1<=num) {$('#star1').removeClass('whitecolor').addClass('goldcolor')};
-  if(2.5<=num) {$('#star2').removeClass('whitecolor').addClass('goldcolor')};
-  if(4.5<=num) {$('#star3').removeClass('whitecolor').addClass('goldcolor')};
-  if(6.5<=num) {$('#star4').removeClass('whitecolor').addClass('goldcolor')};
-  if(8.5<=num) {$('#star5').removeClass('whitecolor').addClass('goldcolor')};
+  if(1<=num) {$('.star1.'+classe).removeClass('whitecolor').addClass('goldcolor')};
+  if(2.5<=num) {$('.star2.'+classe).removeClass('whitecolor').addClass('goldcolor')};
+  if(4.5<=num) {$('.star3.'+classe).removeClass('whitecolor').addClass('goldcolor')};
+  if(6.5<=num) {$('.star4.'+classe).removeClass('whitecolor').addClass('goldcolor')};
+  if(8.5<=num) {$('.star5.'+classe).removeClass('whitecolor').addClass('goldcolor')};
 
 }
