@@ -31,7 +31,7 @@ function filmresearch(){
 
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
-                  '<p><b>LINGUA: </b><span class="flag '+i+'">'+language+'</span></p>'+
+                  '<p><b>LINGUA: </b><span class="lingua '+i+'">'+'</span>'+'<div class="flag '+i+'"></div></p>'+
                   '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
                   '<i class="fas fa-star whitecolor star1 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star2 '+i+'"></i>'+
@@ -66,24 +66,27 @@ function colorstar(num,classe){
 //funziona che crea le bandiere della lingua
 function flagcreate(langselected) {
     if (language=="it") {
-      $('.flag.'+langselected).addClass('it')
+      $('.flag.'+langselected).addClass('ita');
     }
     else if (language=="en") {
-      $('.flag.'+langselected).addClass('uk')
+      $('.flag.'+langselected).addClass('uk');
     }
     else if (language=="fr") {
-      $('.flag').addClass('fr')
+      $('.flag.'+langselected).addClass('fr');
     }
     else if (language=="es") {
-      $('.flag').addClass('es')
+      $('.flag.'+langselected).addClass('es');
     }
     else if (language=="de") {
-      $('.flag').addClass('de')
+      $('.flag.'+langselected).addClass('de');
     }
     else if (language=="ru") {
-      $('.flag.'+langselected).addClass('ru')
+      $('.flag.'+langselected).addClass('ru');
     }
     else if (language=="zh") {
-      $('.flag').addClass('china')
+      $('.flag.'+langselected).addClass('china');
+    }
+    else {
+      $('.lingua.'+langselected).html(language);
     }
 }

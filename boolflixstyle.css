@@ -8,8 +8,9 @@
   width: 50px;
   height: 25px;
   background-size: cover;
+  display: inline-block;
 }
-.it {
+.ita {
   background-image: url('https://cdn.pixabay.com/photo/2013/07/13/12/51/flag-160485_960_720.png');
 }
 .uk {
@@ -28,5 +29,5 @@
   background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png');
 }
 .china {
-  
+  background-image: url('https://cdn.britannica.com/90/7490-004-415899A0.jpg');
 }
