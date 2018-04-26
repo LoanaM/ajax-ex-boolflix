@@ -31,14 +31,17 @@ function filmresearch(){
 
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
-                  '<p><b>LINGUA: </b><span id="lingua">'+language+'</span></p>'+
+                  '<p><b>LINGUA: </b><span class="flag '+i+'">'+language+'</span></p>'+
                   '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
                   '<i class="fas fa-star whitecolor star1 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star2 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star3 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star4 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star5 '+i+'"></i>')
-                  colorstar(vote,i)
+
+                  flagcreate(i); //sostituisco la lingua con la bandiera
+                  colorstar(vote,i); //coloro le stelle punteggio
+
                 }
                 console.log(data);
               },
@@ -49,10 +52,7 @@ function filmresearch(){
 };
 
 
-
-
-
-//trasformo in numeri decimali in 5stelle
+//trasformo i numeri decimali in 5stelle
 function colorstar(num,classe){
 
   if(1<=num) {$('.star1.'+classe).removeClass('whitecolor').addClass('goldcolor')};
@@ -61,4 +61,29 @@ function colorstar(num,classe){
   if(6.5<=num) {$('.star4.'+classe).removeClass('whitecolor').addClass('goldcolor')};
   if(8.5<=num) {$('.star5.'+classe).removeClass('whitecolor').addClass('goldcolor')};
 
+}
+
+//funziona che crea le bandiere della lingua
+function flagcreate(langselected) {
+    if (language=="it") {
+      $('.flag.'+langselected).addClass('it')
+    }
+    else if (language=="en") {
+      $('.flag.'+langselected).addClass('uk')
+    }
+    else if (language=="fr") {
+      $('.flag').addClass('fr')
+    }
+    else if (language=="es") {
+      $('.flag').addClass('es')
+    }
+    else if (language=="de") {
+      $('.flag').addClass('de')
+    }
+    else if (language=="ru") {
+      $('.flag.'+langselected).addClass('ru')
+    }
+    else if (language=="zh") {
+      $('.flag').addClass('china')
+    }
 }
