@@ -12,6 +12,8 @@ $('#search').keypress(function(e){
 //funzione che ricerca il film
 function filmresearch(){
   var ricerca = $('#search').val()
+  //svuoto la ricerca precedente
+  $('.risultati').html('')
     $.ajax ({
               url: 'https://api.themoviedb.org/3/search/movie',
               method: "GET",
@@ -21,8 +23,6 @@ function filmresearch(){
                   language: 'it-IT',
                 },
               success: function(data) {
-                //svuoto la ricerca precedente
-                $('.risultati').html('')
                 for (var i = 0; i < data.results.length; i++) {
                   title = data.results[i].title
                   originaltitle = data.results[i].original_title
@@ -32,6 +32,7 @@ function filmresearch(){
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
                   '<p><b>LINGUA: </b><span class="lingua '+i+'">'+'</span>'+'<div class="flag '+i+'"></div></p>'+
+                  '<p><b>CATEGORIA: </b><span id="category">Film</span></p>'+
                   '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
                   '<i class="fas fa-star whitecolor star1 '+i+'"></i>'+
                   '<i class="fas fa-star whitecolor star2 '+i+'"></i>'+
@@ -49,6 +50,42 @@ function filmresearch(){
                 alert('error');
               }
    });
+   $.ajax ({
+             url: 'https://api.themoviedb.org/3/search/tv',
+             method: "GET",
+             data: {
+                 api_key: 'ba3883789387df574629b95faa1837fc',
+                 query: ricerca,
+                 language: 'it-IT',
+               },
+             success: function(data) {
+               for (var i = 0; i < data.results.length; i++) {
+                 language = data.results[i].original_language
+                 vote = data.results[i].vote_average
+                 name = data.results[i].name
+                 originalname = data.results[i].original_name
+                 var k=100
+                 $('.risultati').append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
+                 '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
+                 '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
+                 '<p><b>CATEGORIA: </b><span id="category">Telefilm</span></p>'+
+                 '<p><b>VOTO: </b><span id="voto">'+vote+'</span></p>'+
+                 '<i class="fas fa-star whitecolor star1 '+k+'"></i>'+
+                 '<i class="fas fa-star whitecolor star2 '+k+'"></i>'+
+                 '<i class="fas fa-star whitecolor star3 '+k+'"></i>'+
+                 '<i class="fas fa-star whitecolor star4 '+k+'"></i>'+
+                 '<i class="fas fa-star whitecolor star5 '+k+'"></i>')
+
+                 flagcreate(k); //sostituisco la lingua con la bandiera
+                 colorstar(vote,k); //coloro le stelle punteggio
+
+               }
+               console.log(data);
+             },
+             error: function(){
+               alert('error');
+             }
+  });
 };
 
 
@@ -85,6 +122,12 @@ function flagcreate(langselected) {
     }
     else if (language=="zh") {
       $('.flag.'+langselected).addClass('china');
+    }
+    else if (language=="ja") {
+      $('.flag.'+langselected).addClass('ja');
+    }
+    else if (language=="nl") {
+      $('.flag.'+langselected).addClass('nl');
     }
     else {
       $('.lingua.'+langselected).html(language);
