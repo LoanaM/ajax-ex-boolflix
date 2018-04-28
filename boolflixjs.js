@@ -28,6 +28,9 @@ function filmresearch(){
                   originaltitle = data.results[i].original_title
                   language = data.results[i].original_language
                   vote = data.results[i].vote_average
+                  image = data.results[i].backdrop_path
+
+                  $('.images').append('<img src="https://image.tmdb.org/t/p/w342'+image+'">')
 
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
@@ -59,12 +62,14 @@ function filmresearch(){
                  language: 'it-IT',
                },
              success: function(data) {
+               var k=1000
                for (var i = 0; i < data.results.length; i++) {
                  language = data.results[i].original_language
                  vote = data.results[i].vote_average
                  name = data.results[i].name
                  originalname = data.results[i].original_name
-                 var k=100
+                 image = data.results[i].backdrop_path
+
                  $('.risultati').append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
                  '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
                  '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
@@ -78,7 +83,7 @@ function filmresearch(){
 
                  flagcreate(k); //sostituisco la lingua con la bandiera
                  colorstar(vote,k); //coloro le stelle punteggio
-
+                k++ 
                }
                console.log(data);
              },
