@@ -30,7 +30,8 @@ function filmresearch(){
                   vote = data.results[i].vote_average
                   image = data.results[i].backdrop_path
 
-                  $('.images').append('<img src="https://image.tmdb.org/t/p/w342'+image+'">')
+                  $('.cards').append('<div class="card '+i+'">'+'</div>')
+                  $('.card.'+i).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
 
                   $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
@@ -83,7 +84,7 @@ function filmresearch(){
 
                  flagcreate(k); //sostituisco la lingua con la bandiera
                  colorstar(vote,k); //coloro le stelle punteggio
-                k++ 
+                k++
                }
                console.log(data);
              },

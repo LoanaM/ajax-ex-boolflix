@@ -37,3 +37,15 @@
 .nl {
   background-image: url('http://flags.fmcdn.net/data/flags/w580/nl.png');
 }
+
+.card {
+  width: 250px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid white;
+  background-image: ;
+}
+.risultati {
+  display: none;
+}
