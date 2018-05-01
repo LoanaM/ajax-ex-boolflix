@@ -13,7 +13,7 @@ $('#search').keypress(function(e){
 function filmresearch(){
   var ricerca = $('#search').val()
   //svuoto la ricerca precedente
-  $('.risultati').html('')
+  $('.cards').html('')
     $.ajax ({
               url: 'https://api.themoviedb.org/3/search/movie',
               method: "GET",
@@ -30,10 +30,10 @@ function filmresearch(){
                   vote = data.results[i].vote_average
                   image = data.results[i].backdrop_path
 
-                  $('.cards').append('<div class="card '+i+'">'+'</div>')
+                  $('.cards').append('<div class="card '+i+'">'+'<div class="risultati '+i+'">'+'</div>'+'</div>')
                   $('.card.'+i).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
 
-                  $('.risultati').append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
+                  $('.risultati.'+i).append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
                   '<p><b>LINGUA: </b><span class="lingua '+i+'">'+'</span>'+'<div class="flag '+i+'"></div></p>'+
                   '<p><b>CATEGORIA: </b><span id="category">Film</span></p>'+
@@ -93,6 +93,13 @@ function filmresearch(){
              }
   });
 };
+
+$(document).on('mouseover','.card',function(){
+  $(this).children('.risultati').addClass('display')
+});
+$(document).on('mouseleave','.card',function(){
+  $(this).children('.risultati').removeClass('display')
+});
 
 
 //trasformo i numeri decimali in 5stelle

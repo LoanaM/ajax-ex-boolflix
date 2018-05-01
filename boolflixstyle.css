@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin:0;
+  /*padding:0; */
+}
+body {
+  width:100vw;
+  overflow: hidden;
+  background-color: #2f2f2f;
+}
+
 .goldcolor {
   color: #ffd700;
 }
@@ -44,8 +55,44 @@
   background-size: cover;
   background-position: center;
   border: 2px solid white;
+  display: inline-block;
+  margin: 15px;
+  position: relative;
   background-image: ;
 }
 .risultati {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.display {
+  display: block;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header img {
+  height: 80%;
+  margin-left: 10px;
+}
+#searchbox {
+  margin-right: 10px;
+}
+#searchbox input {
+  border-radius: 3px;
+  border: none;
+  font-size: 15px;
+  font-family: Verdana;
+}
+#searchbox button {
+  border-radius: 5px;
+  font-size: 15px;
+  font-family: Verdana;
 }
