@@ -71,7 +71,10 @@ function filmresearch(){
                  originalname = data.results[i].original_name
                  image = data.results[i].backdrop_path
 
-                 $('.risultati').append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
+                 $('.cards').append('<div class="card '+k+'">'+'<div class="risultati '+k+'">'+'</div>'+'</div>')
+                 $('.card.'+k).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
+          
+                 $('.risultati.'+k).append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
                  '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
                  '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
                  '<p><b>CATEGORIA: </b><span id="category">Telefilm</span></p>'+
