@@ -30,8 +30,9 @@ function filmresearch(){
                   vote = data.results[i].vote_average
                   image = data.results[i].backdrop_path
 
-                  $('.cards').append('<div class="card '+i+'">'+'<div class="risultati '+i+'">'+'</div>'+'</div>')
+                  $('.cards').append('<div class="card '+i+'">'+'<h1>'+'</h1>'+'<div class="risultati '+i+'">'+'</div>'+'</div>')
                   $('.card.'+i).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
+                  $('.card.'+i+' h1').text(title)
 
                   $('.risultati.'+i).append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
@@ -71,9 +72,11 @@ function filmresearch(){
                  originalname = data.results[i].original_name
                  image = data.results[i].backdrop_path
 
-                 $('.cards').append('<div class="card '+k+'">'+'<div class="risultati '+k+'">'+'</div>'+'</div>')
+                 //creo le card con sfondo e titolo del tf
+                 $('.cards').append('<div class="card '+k+'">'+'<h1>'+'</h1>'+'<div class="risultati '+k+'">'+'</div>'+'</div>')
                  $('.card.'+k).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
-          
+                 $('.card.'+k+' h1').text(name)
+
                  $('.risultati.'+k).append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
                  '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
                  '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
