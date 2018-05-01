@@ -70,6 +70,7 @@ body {
   width: 100%;
   font-family: verdana;
   font-size: 12px;
+  overflow-y: hidden;
 }
 .display {
   display: block;
