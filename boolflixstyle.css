@@ -68,9 +68,15 @@ body {
   background-color: grey;
   height: 100%;
   width: 100%;
+  font-family: verdana;
+  font-size: 12px;
 }
 .display {
   display: block;
+}
+h1 {
+  font-family: 'Bungee Shade';font-size: 22px;
+  color: white;
 }
 
 header {
@@ -86,7 +92,7 @@ header img {
   margin-left: 10px;
 }
 #searchbox {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 #searchbox input {
   border-radius: 3px;
