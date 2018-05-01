@@ -31,9 +31,14 @@ function filmresearch(){
                   image = data.results[i].poster_path
                   overview = data.results[i].overview
 
+                  //creo la card con la cover
                   $('.cards').append('<div class="card '+i+'">'+'<div class="risultati '+i+'">'+'</div>'+'</div>')
                   $('.card.'+i).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
-
+                  //sostituisco l'immagine se non disponibile
+                  if (image==null) {
+                    $('.card.'+i).css('background-image','url("http://www.rrudforce.it/wp-content/uploads/2014/12/non_disponibile.gif")')
+                  }
+                   //creo il contenuto delle card
                   $('.risultati.'+i).append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
                   '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
                   '<p><b>LINGUA: </b><span class="lingua '+i+'">'+'</span>'+'<div class="flag '+i+'"></div></p>'+
@@ -74,10 +79,15 @@ function filmresearch(){
                  image = data.results[i].poster_path
                  overview = data.results[i].overview
 
-                 //creo le card con sfondo e titolo del tf
+                 //creo le card con sfondo
                  $('.cards').append('<div class="card '+k+'">'+'<div class="risultati '+k+'">'+'</div>'+'</div>')
                  $('.card.'+k).css('background-image','url("https://image.tmdb.org/t/p/w342'+image+'")')
+                 //sostituisco l'immagine se non disponibile
+                 if (image==null) {
+                   $('.card.'+k).css('background-image','url("http://www.rrudforce.it/wp-content/uploads/2014/12/non_disponibile.gif")')
+                 }
 
+                 //creo il contenuto delle card
                  $('.risultati.'+k).append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
                  '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
                  '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
@@ -102,6 +112,7 @@ function filmresearch(){
   });
 };
 
+//al passaggio del mouse mostro il contenuto del film
 $(document).on('mouseover','.card',function(){
   $(this).children('.risultati').addClass('display')
 });

@@ -19,6 +19,7 @@ body {
   width: 50px;
   height: 25px;
   background-size: cover;
+  background-position: center;
   display: inline-block;
 }
 .ita {
@@ -49,6 +50,10 @@ body {
   background-image: url('http://flags.fmcdn.net/data/flags/w580/nl.png');
 }
 
+.cards {
+  width: 90%;
+  margin: auto;
+}
 .card {
   width: 250px;
   height: 350px;
