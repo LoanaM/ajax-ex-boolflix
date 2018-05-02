@@ -38,19 +38,8 @@ function filmresearch(){
                   if (image==null) {
                     $('.card.'+i).css('background-image','url("http://www.rrudforce.it/wp-content/uploads/2014/12/non_disponibile.gif")')
                   }
-                   //creo il contenuto delle card
-                  $('.risultati.'+i).append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
-                  '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
-                  '<p><b>LINGUA: </b><span class="lingua '+i+'">'+'</span>'+'<div class="flag '+i+'"></div></p>'+
-                  '<p><b>CATEGORIA: </b><span id="category">Film</span></p>'+
-                  '<b>VOTO: </b><span id="voto">'+'</span>'+
-                  '<i class="fas fa-star whitecolor star1 '+i+'"></i>'+
-                  '<i class="fas fa-star whitecolor star2 '+i+'"></i>'+
-                  '<i class="fas fa-star whitecolor star3 '+i+'"></i>'+
-                  '<i class="fas fa-star whitecolor star4 '+i+'"></i>'+
-                  '<i class="fas fa-star whitecolor star5 '+i+'"></i>'+
-                  '<p><b>TRAMA: </b><span>'+overview+'</span></p>')
-
+                  //creo il contenuto delle card
+                  moviecontent(i);
                   flagcreate(i); //sostituisco la lingua con la bandiera
                   colorstar(vote,i); //coloro le stelle punteggio
 
@@ -74,8 +63,8 @@ function filmresearch(){
                for (var i = 0; i < data.results.length; i++) {
                  language = data.results[i].original_language
                  vote = data.results[i].vote_average
-                 name = data.results[i].name
-                 originalname = data.results[i].original_name
+                 title = data.results[i].name
+                 originaltitle = data.results[i].original_name
                  image = data.results[i].poster_path
                  overview = data.results[i].overview
 
@@ -88,18 +77,7 @@ function filmresearch(){
                  }
 
                  //creo il contenuto delle card
-                 $('.risultati.'+k).append('<p><b>TITOLO: </b><span id="nome">'+name+'</span></p>'+
-                 '<p><b>TITOLO ORIGINALE: </b><span id="nomeoriginale">'+originalname+'</span></p>'+
-                 '<p><b>LINGUA: </b><span class="lingua '+k+'">'+'</span>'+'<div class="flag '+k+'"></div></p>'+
-                 '<p><b>CATEGORIA: </b><span id="category">Telefilm</span></p>'+
-                 '<b>VOTO: </b><span id="voto">'+'</span>'+
-                 '<i class="fas fa-star whitecolor star1 '+k+'"></i>'+
-                 '<i class="fas fa-star whitecolor star2 '+k+'"></i>'+
-                 '<i class="fas fa-star whitecolor star3 '+k+'"></i>'+
-                 '<i class="fas fa-star whitecolor star4 '+k+'"></i>'+
-                 '<i class="fas fa-star whitecolor star5 '+k+'"></i>'+
-                 '<p><b>TRAMA: </b><span>'+overview+'</span></p>')
-
+                 moviecontent(k);             
                  flagcreate(k); //sostituisco la lingua con la bandiera
                  colorstar(vote,k); //coloro le stelle punteggio
                 k++
@@ -121,18 +99,31 @@ $(document).on('mouseleave','.card',function(){
 });
 
 
-//trasformo i numeri decimali in 5stelle
-function colorstar(num,classe){
+//funzione che crea i contenuti del film
+function moviecontent(variabile) {
+  $('.risultati.'+variabile).append('<p><b>TITOLO: </b><span id="titolo">'+title+'</span></p>'+
+  '<p><b>TITOLO ORIGINALE: </b><span id="titoloriginale">'+originaltitle+'</span></p>'+
+  '<p><b>LINGUA: </b><span class="lingua '+variabile+'">'+'</span>'+'<div class="flag '+variabile+'"></div></p>'+
+  '<p><b>CATEGORIA: </b><span id="category">Film</span></p>'+
+  '<b>VOTO: </b><span id="voto">'+'</span>'+
+  '<i class="fas fa-star whitecolor star1 '+variabile+'"></i>'+
+  '<i class="fas fa-star whitecolor star2 '+variabile+'"></i>'+
+  '<i class="fas fa-star whitecolor star3 '+variabile+'"></i>'+
+  '<i class="fas fa-star whitecolor star4 '+variabile+'"></i>'+
+  '<i class="fas fa-star whitecolor star5 '+variabile+'"></i>'+
+  '<p><b>TRAMA: </b><span>'+overview+'</span></p>')
+}
 
+//funzione per trasformare i voti in stelle
+function colorstar(num,classe){
   if(1<=num) {$('.star1.'+classe).removeClass('whitecolor').addClass('goldcolor')};
   if(2.5<=num) {$('.star2.'+classe).removeClass('whitecolor').addClass('goldcolor')};
   if(4.5<=num) {$('.star3.'+classe).removeClass('whitecolor').addClass('goldcolor')};
   if(6.5<=num) {$('.star4.'+classe).removeClass('whitecolor').addClass('goldcolor')};
   if(8.5<=num) {$('.star5.'+classe).removeClass('whitecolor').addClass('goldcolor')};
-
 }
 
-//funziona che crea le bandiere della lingua
+//funzione che crea le bandiere della lingua
 function flagcreate(langselected) {
     if (language=="it") {
       $('.flag.'+langselected).addClass('ita');
